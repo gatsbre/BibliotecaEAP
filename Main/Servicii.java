@@ -1,11 +1,115 @@
-package Main;
-import Biblioteca.*;
+package main;
+import biblioteca.*;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Servicii {
 
+    public static void citireFisier(List <Scrieri> listaScrieri, List<Client> listaClienti)
+    {
+        try{
+            File fisier_listaClienti = new File("src/biblioteca/clienti.csv");
+            Scanner scanner = new Scanner(fisier_listaClienti);
+            if(scanner.hasNextLine())
+                scanner.nextLine();
+            while(scanner.hasNextLine()){
+                String data = scanner.nextLine();
+                String[] arg_of_Data = data.split(",");
+                Client client = new Client(arg_of_Data[0],arg_of_Data[1],arg_of_Data[2]);
+                listaClienti.add(client);
+            }
+            scanner.close();
+        }
+        catch (FileNotFoundException e){
+            System.out.println("Fisierul de citire nu a fost gasit");
+            e.printStackTrace();
+        }
+        try{
+            File fisier_listaCarti = new File("src/biblioteca/carti.csv");
+            Scanner scanner = new Scanner(fisier_listaCarti);
+            if(scanner.hasNextLine())
+                scanner.nextLine();
+            while(scanner.hasNextLine()){
+                String data = scanner.nextLine();
+                String[] arg_of_Data = data.split(",");
+                Editura editura = new Editura(arg_of_Data[3]);
+                Autor autor = new Autor(arg_of_Data[1]);
+                Carte carte = new Carte(arg_of_Data[0],autor,arg_of_Data[2],editura,arg_of_Data[4]);
+                listaScrieri.add(carte);
+            }
+            scanner.close();
+        }
+        catch (FileNotFoundException e){
+            System.out.println("Fisierul de citire nu a fost gasit");
+            e.printStackTrace();
+        }
+        try{
+            File fisier_listaRevista = new File("src/biblioteca/revista.csv");
+            Scanner scanner = new Scanner(fisier_listaRevista);
+            if(scanner.hasNextLine())
+                scanner.nextLine();
+            while(scanner.hasNextLine()){
+                String data = scanner.nextLine();
+                String[] arg_of_Data = data.split(",");
+                Revista revista = new Revista(arg_of_Data[0],arg_of_Data[1],Integer.parseInt(arg_of_Data[2]));
+                listaScrieri.add(revista);
+            }
+            scanner.close();
+        }
+        catch (FileNotFoundException e){
+            System.out.println("Fisierul de citire nu a fost gasit");
+            e.printStackTrace();
+        }
+
+        try{
+            File fisier_listaZiare = new File("src/biblioteca/ziar.csv");
+            Scanner scanner = new Scanner(fisier_listaZiare);
+            if(scanner.hasNextLine())
+                scanner.nextLine();
+            while(scanner.hasNextLine()){
+                String data = scanner.nextLine();
+                String[] arg_of_Data = data.split(",");
+                Ziar ziar = new Ziar(arg_of_Data[0],arg_of_Data[1],arg_of_Data[2]);
+                listaScrieri.add(ziar);
+            }
+            scanner.close();
+        }
+        catch (FileNotFoundException e){
+            System.out.println("Fisierul de citire nu a fost gasit");
+            e.printStackTrace();
+        }
+
+
+    }
+    /*
+    public static void scriereFisier(List <Scrieri> listaScrieri, List<Client> listaClienti) throws IOException {
+        FileWriter scriereClient = new FileWriter("src/biblioteca/clienti.csv");
+        scriereClient.write("nume, adresa, nr telefon\n");
+        for(Client x : listaClienti)
+            scriereClient.write(x.getNume()+","+x.getAdresa()+","+x.getNrTelefon()+"\n");
+        scriereClient.close();
+        Carte y1 = new Carte();
+        Ziar y2 = new Ziar();
+        Revista y3 = new Revista();
+        FileWriter scriereCarte = new FileWriter("src/biblioteca/carti.csv");
+        FileWriter scriereRevista = new FileWriter("src/biblioteca/revista.csv");
+        FileWriter scriereZiar = new FileWriter("src/biblioteca/ziar.csv");
+        scriereRevista.write("nume, anul publicarii, numar\n");
+        scriereZiar.write("nume, anul publicarii, domeniu\n");
+        scriereCarte.write("nume, autor, anul publicarii, editura, isbn\n");
+        for(Scrieri x: listaScrieri)
+            if(x.getClass() == y1.getClass())
+            {
+
+            }
+
+    }
+    */
     public static void cautareScriere(List<Scrieri> listaScrieri)
     {
         Scanner scanner = new Scanner(System.in);
