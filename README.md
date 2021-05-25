@@ -1,24 +1,24 @@
 # BibliotecaEAP
 Clasele create
-1. Biblioteca
-2. Scrieri
+1. Abonament
+2. Imprumut
 3. Carte
-4. Revista
-5. Ziar
-6. Editura
-7. Client
-8. Autor
+4. Adresa
+5. Angajat
+6. Autor
+7. Cititor
+8. Persoana
 9. Servicii
 10. Main
 
 Serviciile create
-1. Cautare scriere
-2. Stergere scriere
-3. Stergere client
-4. Cautare client
-5. Adaugare client
-6. Adaugare scrieri
-7. Afisare clienti
-8. Afisare scrieri
+1. Afisarea cartilor
+2. Cautare carte
+3. Cautare client
+4. Afisare carti imprumutate
+5. Predare carte
+6. Imprumutare carte
+7. Afisare cartilor imprumutate de un client
+8. Adaugare client
 9. Imprumuturi scriere
-10. Predare scriere
+10. Afisati angajati si detaliile acestora
